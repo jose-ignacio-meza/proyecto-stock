@@ -119,14 +119,11 @@ export const getPrinterByDependency = async (id) => {
 
 export const getStats= async() => {
   try {
-
     // Obtener la lista de marcas únicas
     const brandsList = await printerModel.distinct('brand');
-    
-    // Crear un objeto para almacenar la cantidad de impresoras por marca
-    const brandCounts = {};
 
     // Recorrer la lista de marcas y contar las impresoras de cada marca
+    const brandCounts = {};
     for (const brand of brandsList) {
       const count = await printerModel.countDocuments({ brand: brand });
       brandCounts[brand] = count;
@@ -136,17 +133,25 @@ export const getStats= async() => {
     const modelsList = await printerModel.distinct('model');
     
     // Recorrer la lista de modelos y contar las impresoras de cada modelo
+    const modelCounts = {};
     for (const model of modelsList) {
       const count = await printerModel.countDocuments({ model: model });
       modelCounts[model] = count;
     }
 
-    // Crear el objeto de estadísticas
-    const stats = {
-      models: modelCounts,
-      brands: brandCounts
-    };
+    // Obtener la lista de pisos únicos
+    const floorsList = await printerModel.distinct('floor');
     
+    // Recorrer la lista de pisos y contar las impresoras de cada piso
+    const floorCounts = {};
+    for (const floor of floorsList) {
+      const count = await printerModel.countDocuments({ floor: floor });
+      floorCounts[floor] = count;
+    }
+
+    // Crear el objeto de estadísticas
+    const stats = { brandCounts, modelCounts, floorCounts };
+    console.log(stats);
     return stats;
   } catch (error) {
     throw new Error(error.message);

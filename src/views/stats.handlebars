@@ -1,36 +1,88 @@
-{{! filepath: /c:/Users/imeza/Documents/proyecto stock/src/views/stats.handlebars }}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Estadísticas de Impresoras</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas de Impresoras</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Estadísticas Generales de Impresoras</h1>
-    <div>
+    <h1 style="margin-top:50px;">Estadísticas Generales de Impresoras</h1>
+    <div style=" margin-top:10px; width: 50%">
         <h2>Cantidad de Equipos por Marca</h2>
         <canvas id="brandChart"></canvas>
     </div>
-    <div>
+    <div style=" margin-top:20px;">
         <h2>Cantidad de Equipos por Modelo</h2>
         <canvas id="modelChart"></canvas>
+    </div>
+    <div style=" margin-top:20px;">
+        <h2>Cantidad de Equipos por Piso</h2>
+        <canvas id="floorChart"></canvas>
     </div>
 
     <script>
         const stats = {{{json stats}}};
-        const brandData = {{{json stats.brandCounts}}};
-        const modelData = {{{json stats.modelCounts}}};
+        const brandData = stats.brandCounts;
+        const modelData = stats.modelCounts;
+        const floorData = stats.floorCounts;
 
         const brandCtx = document.getElementById('brandChart').getContext('2d');
         const modelCtx = document.getElementById('modelChart').getContext('2d');
+        const floorCtx = document.getElementById('floorChart').getContext('2d');
 
         new Chart(brandCtx, {
-            type: 'bar',
+            type: 'pie', // Cambiar el tipo de gráfico a 'pie'
             data: {
-                labels: Object.keys(brandData),
+                labels: Object.keys(brandData), // Etiquetas (nombres de las marcas)
                 datasets: [{
                     label: 'Cantidad de Equipos',
-                    data: Object.values(brandData),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    data: Object.values(brandData), // Datos (cantidad de equipos por marca)
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(modelCtx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(modelData), // Etiquetas (nombres de los modelos)
+                datasets: [{
+                    label: 'Cantidad de Equipos',
+                    data: Object.values(modelData), // Datos (cantidad de equipos por modelo)
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
                     borderWidth: 1
                 }]
             },
@@ -43,15 +95,15 @@
             }
         });
 
-        new Chart(modelCtx, {
+        new Chart(floorCtx, {
             type: 'bar',
             data: {
-                labels: Object.keys(modelData),
+                labels: Object.keys(floorData), // Etiquetas (nombres de los pisos)
                 datasets: [{
                     label: 'Cantidad de Equipos',
-                    data: Object.values(modelData),
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    data: Object.values(floorData), // Datos (cantidad de equipos por piso)
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
                     borderWidth: 1
                 }]
             },

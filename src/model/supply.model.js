@@ -4,8 +4,7 @@ const supplySchema = new mongoose.Schema({
   type: { type: String, required: true }, // Tipo de insumo (tóner, tinta, etc.)
   quantity: { type: Number, required: true },
   lastUpdated: { type: Date, default: Date.now },
-  printer: { type: mongoose.Schema.Types.ObjectId, ref: 'Printer' }, // Referencia a la impresora asociada
+  printerModel: { type: String, required: true } // Relacionar con el modelo de impresora
 });
 
 export default mongoose.model('Supply', supplySchema);
- 
