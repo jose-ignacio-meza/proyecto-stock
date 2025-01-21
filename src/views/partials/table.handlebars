@@ -1,0 +1,47 @@
+
+    
+    <table id="printersTable" border="1">
+        <thead>
+            <tr>
+                <th>Piso</th>
+                <th>Oficina</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Dependencia</th>
+                <th>Estado</th>
+                <th>Oblea</th>
+                <th>ip</th>
+                <th>Serial</th>
+                <th>Contador</th>
+                <th>Fecha Contador</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each printers}}
+                <tr>
+                    <td>{{this.floor}}</td>
+                    <td>{{this.office}}</td>
+                    <td>{{this.brand}}</td>
+                    <td>{{this.model}}</td>
+                    <td>{{this.dependency}}</td>
+                    <td>{{this.status}}</td>
+                    <td>{{this.oblea}}</td>
+                    {{#ifEquals this.ip "afuera"}}
+                        <td>{{this.ip}}</td>
+                    {{else}}
+                        <td><a target="blank" href="https://{{this.ip}}">{{this.ip}}</a></td>
+                    {{/ifEquals}}
+                    <td>{{this.serial}}</td>
+                    <td>{{this.counter}}</td>
+                    <td>{{this.fechaCounter}}</td>
+                    {{!-- <td>
+                        {{#each this.supplies}}
+                            <div>Tipo: {{this.type}}, Cantidad: {{this.quantity}}</div>
+                        {{/each}}
+                    </td> --}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+   

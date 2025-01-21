@@ -1,0 +1,15 @@
+<h1>{{message}}</h1>
+<p>Esta es la página de inicio.</p>
+<ul>
+    {{#each brands}}
+        <li>{{this.name}}
+            <ul>
+                {{#each this.models}}
+                    <li><a href="/printer/{{this.id}}">{{this.name}}</a> - Total: {{this.count}}</li>
+                {{/each}}
+            </ul>
+            <p>Total por marca: {{this.totalCount}}</p>
+        </li>
+    {{/each}}
+</ul>
+<p>Total de impresoras: {{totalPrinters}}</p>

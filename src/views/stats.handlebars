@@ -1,0 +1,68 @@
+{{! filepath: /c:/Users/imeza/Documents/proyecto stock/src/views/stats.handlebars }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estadísticas de Impresoras</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Estadísticas Generales de Impresoras</h1>
+    <div>
+        <h2>Cantidad de Equipos por Marca</h2>
+        <canvas id="brandChart"></canvas>
+    </div>
+    <div>
+        <h2>Cantidad de Equipos por Modelo</h2>
+        <canvas id="modelChart"></canvas>
+    </div>
+
+    <script>
+        const stats = {{{json stats}}};
+        const brandData = {{{json stats.brandCounts}}};
+        const modelData = {{{json stats.modelCounts}}};
+
+        const brandCtx = document.getElementById('brandChart').getContext('2d');
+        const modelCtx = document.getElementById('modelChart').getContext('2d');
+
+        new Chart(brandCtx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(brandData),
+                datasets: [{
+                    label: 'Cantidad de Equipos',
+                    data: Object.values(brandData),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(modelCtx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(modelData),
+                datasets: [{
+                    label: 'Cantidad de Equipos',
+                    data: Object.values(modelData),
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

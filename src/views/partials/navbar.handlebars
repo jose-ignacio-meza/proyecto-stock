@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link" href="http://localhost:3000/printers">
+        Home
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Marcas
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+        <div class="dropdown-submenu">
+        <a class="dropdown-item dropdown-submenu" href="http://localhost:3000/printers/brand/HP">HP</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/HP/model/MFP-432">MFP-432</a>
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/HP/model/LaserJet%20MFP%20E72535">LaserJet MFP E72535</a>
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/HP/model/LaserJet%20Managed%20MFP%20E47528">LaserJet Managed MFP E47528</a>
+          </div>
+        </div>
+
+        <div class="dropdown-submenu">
+        <a class="dropdown-item dropdown-submenu" href="http://localhost:3000/printers/brand/BROTHER">Brother</a>
+        
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/BROTHER/model/DCP-L5650DN">DCP-L5650DN</a>
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/BROTHER/model/MFC-L8900CDW">MFC-L8900CDW</a>
+          </div>
+        </div>
+
+        <div class="dropdown-submenu">
+        <a class="dropdown-item dropdown-submenu" href="http://localhost:3000/printers/brand/KONICA%20MINOLTA">Konica Minolta</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/KONICA%20MINOLTA/model/Bizhub%20C558">Bizhub C558</a>
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/KONICA%20MINOLTA/model/Bizhub%20554">Bizhub 554</a>
+            <a class="dropdown-item" href="http://localhost:3000/printers/brand/KONICA%20MINOLTA/model/Bizhub%20C308">Bizhub C308</a>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Piso
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/P-B">Piso P/B</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/E-P">Entre Piso</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/1">Piso 1</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/2">Piso 2</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/4">Piso 4</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/5">Piso 5</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/6">Piso 6</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/7">Piso 7</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/8">Piso 8</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/9">Piso 9</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/10">Piso 10</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/11">Piso 11</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/12">Piso 12</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/13">Piso 13</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/floor/14">Piso 14</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Edificio
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/D.P.Energia">D.P.Energia</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/Automotores-Archivo">Automotores-Archivo</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/Automotores-Administrativo">Automotores-Administrativo</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/Arquitectura%20Zona%20III">Arquitectura Zona III</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/Jardin%20Maternal">Jardin Maternal</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/Departamento Laboratorio">Departamento Laboratorio</a>
+        <a class="dropdown-item" href="http://localhost:3000/printers/building/Laboratorio Zona 2">Laboratorio Zona 2</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<style>
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-submenu .dropdown-menu {
+    display: none;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
