@@ -17,7 +17,7 @@ router.post('/', async(req,res)=>{
     let supply = {type, quantity, modelPrinter};
     try{
         const newSupply = await supplyController.createSupply(supply);
-        res.status(201).json(newSupply);
+        res.status(200).json({newSupply});
     }catch(error){
         res.status(500).json({error: error.message});
     }
