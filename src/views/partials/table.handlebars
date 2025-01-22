@@ -29,7 +29,11 @@
                     {{#ifEquals this.ip "afuera"}}
                         <td>{{this.ip}}</td>
                     {{else}}
-                        <td><a target="blank" href="https://{{this.ip}}">{{this.ip}}</a></td>
+                        {{#ifEquals this.ip "Conectada por USB"}}
+                            <td>{{this.ip}}</td>
+                        {{else}}
+                            <td><a target="blank" href="https://{{this.ip}}">{{this.ip}}</a></td>
+                        {{/ifEquals}}
                     {{/ifEquals}}
                     <td>{{this.serial}}</td>
                     <td>{{this.counter}}</td>
