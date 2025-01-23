@@ -52,7 +52,6 @@ router.get('/load-printers', async (req, res) => {
           cleanedPrinter.install = 0; // O manejar el error de otra manera
         }
       }
-      console.log(cleanedPrinter);
       return cleanedPrinter;
     });
 
@@ -60,7 +59,7 @@ router.get('/load-printers', async (req, res) => {
     printers = printers.filter(printer => 
         printer.floor && printer.office && printer.dependency && printer.brand && printer.model && printer.install && printer.oblea && printer.ip && printer.serial && printer.counter && printer.fechaCounter
     );
-
+    console.log(printers);
     // Insertar los datos en MongoDB
     await printerModel.insertMany(printers);
     res.send('Datos cargados exitosamente');

@@ -5,9 +5,9 @@ const historySchema = new mongoose.Schema({
   description: { type: String, required: true }, // Descripción del evento
   date: { type: Date, default: Date.now }, // Fecha del evento
   printerModel: { type: String, required: true }, // Modelo de la impresora involucrada
-  location: { type: String }, // Ubicación de la impresora (si aplica)
+  location: { type: String, default: 'Deposito'}, // Ubicación de la impresora (si aplica)
   supplyType: { type: String }, // Tipo de suministro (si aplica)
-  supplyQuantity: { type: Number }, // Cantidad de suministro (si aplica)
+  supplyQuantity: { type: Number, default:1}, // Cantidad de suministro (si aplica)
   partsChanged: { type: String }, // Piezas cambiadas (si aplica)
   notes: { type: String } // Notas adicionales
 });

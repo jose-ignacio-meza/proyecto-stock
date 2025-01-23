@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplies</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+</head>
+<body>
+    <h1 style="margin-top:50px;">Detalles de Suministros</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Modelo de Impresora</th>
+                <th>Ultima modificacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{supply.type}}</td>
+                <td>{{supply.quantity}}</td>
+                <td>{{supply.printerModel}}</td>
+                <td>{{supply.lastUpdated}}</td>
+                <td><a href="http://localhost:3000/api/supplies/{{supply._id}}">Ver Detalles</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html></html>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function() {
+        $('table').DataTable();
+    });
+</script>

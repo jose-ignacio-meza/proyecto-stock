@@ -1,26 +1,19 @@
 import express from 'express';
-import * as supplyController from '../controllers/supply.controller.js';
+import {createSupply, getSuplies, getSupplyById, updateSupply, deleteSupply, loadSupplies} from '../controllers/supply.controller.js';
 
 const router = express.Router();
 
-router.get('/', async (req,res)=>{
-    try{
-        const supplies = await supplyController.getSyplies();
-        res.status(200).json(supplies);
-    }catch(error){
-        res.status(500).json({error: error.message});
-    }
-});
+router.get('/load', loadSupplies);
 
-router.post('/', async(req,res)=>{
-    const {type, quantity, modelPrinter} = req.body;
-    let supply = {type, quantity, modelPrinter};
-    try{
-        const newSupply = await supplyController.createSupply(supply);
-        res.status(200).json({newSupply});
-    }catch(error){
-        res.status(500).json({error: error.message});
-    }
-});  
+router.get('/:oid', getSupplyById);
+
+router.put('/:oid', updateSupply);
+
+router.delete('/:oid', deleteSupply);
+
+router.get('/', getSuplies);
+
+router.post('/', createSupply); 
+
 
 export default router;

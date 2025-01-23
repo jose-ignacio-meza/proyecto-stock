@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplies</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+</head>
+<body>
+    <div style="padding-bottom:30px; display: flex; align-items: flex-end; justify-content: space-between;">
+        <h1 style="margin-top:50px;">Lista de Suministros</h1>
+        <a href="http://localhost:3000/api/supplies/load"><button>Cargar Suministros</button></a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Modelo de Impresora</th>
+                <th>Ultima modificacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each supplies}}
+            <tr>
+                <td>{{this.type}}</td>
+                <td>{{this.quantity}}</td>
+                <td>{{this.printerModel}}</td>
+                <td>{{this.lastUpdated}}</td>
+                <td><a href="http://localhost:3000/api/supplies/{{this._id}}">Ver Detalles</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html></html>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function() {
+        $('table').DataTable();
+    });
+</script>

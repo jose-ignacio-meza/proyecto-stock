@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Suministro</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+</head>
+<body>
+    {{#if error}}
+        <div class="alert alert-danger">
+            <p>{{error}}</p>
+        </div>
+        <script>
+            setTimeout(function() {
+                window.location.href = '/suministros';
+            }, 3000);
+        </script>
+    {{else}}
+        <div class="supply-details">
+            <h1>Detalles del Suministro</h1>
+            <p>ID: {{newSupply.id}}</p>
+            <p>Nombre: {{newSupply.type}}</p>
+            <p>Cantidad: {{newSupply.quantity}}</p>
+            <p>Modelo de Impresora:{{newSupply.printerModel}}</p>
+            <p>Fecha de Carga: {{newSupply.lastUpdated}}</p>
+        </div>
+        <button onclick="window.location.href='http://localhost:3000/api/supplies'">Volver al listado de suministros</button>
+    {{/if}}
+</body>
+</html>

@@ -1,12 +1,7 @@
 import mongoose from 'mongoose';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
-const supplySchema = new mongoose.Schema({
-  type: { type: String, required: true }, // Tipo de insumo (tóner, tinta, etc.)
-  quantity: { type: Number, required: true }, // Cantidad disponible
-  lastUpdated: { type: Date, default: Date.now }, // Fecha de última actualización
-});
-
+// Definición del esquema de impresoras
 const printerSchema = new mongoose.Schema({
   floor: { type: String, required: true }, // Piso donde se encuentra la impresora
   office: { type: String, required: true }, // Oficina donde se encuentra la impresora
@@ -20,9 +15,9 @@ const printerSchema = new mongoose.Schema({
   counter: { type: Number, required: true }, // Contador de impresiones
   fechaCounter: { type: Date, required: true }, // Fecha de la última actualización del contador
   status: { type: String, enum: ['active', 'inactive', 'maintenance'], default: 'active' }, // Estado de la impresora
-  supplies: [supplySchema], // Lista de insumos
+  supplies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Supply' }], // Referencia a los insumos registrados
   createdAt: { type: Date, default: Date.now }, // Fecha de creación
-  updatedAt: { type: Date, default: Date.now }, // Fecha de última actualización
+  updatedAt: { type: Date, default: () => moment().tz('America/Sao_Paulo').toDate() }, // Configurar la fecha con UTC-3
 });
 
 // Middleware para actualizar `updatedAt` automáticamente
